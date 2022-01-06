@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodawanie grupy</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<form role="form" enctype="multipart/form-data" th:action="@{/add-apartment}" th:object="${apartmentRequest}" method="post" style="max-width: 700px; margin: 0 auto;">
+    <div class="border border-secondary rounded p-3">
+        <div class="form-group row">
+            <label class="col-sm-4 col-from-label">Powierzchnia mieszkania</label>
+            <div class="col-sm-8">
+                <input type="number" th:field="*{surface}" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-4 col-from-label">Ilość pokoi</label>
+            <div class="col-sm-8">
+                <input type="number" th:field="*{number_of_rooms}" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-4 col-from-label">Numer piętra</label>
+            <div class="col-sm-8">
+                <input type="number" th:field="*{floor}" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-4 col-from-label">Numer budynku</label>
+            <div class="col-sm-8">
+                <input name="buildings_number" th:field="*{buildings_number}" id="buildings_number">
+                    <option th:each=" building : ${buildingList}"
+                    th:value="${building.id}"
+                    th:text="${building.id}">Id </option>
+                </input>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary"> Dodaj mieszkanie</button>
+    </div>
+
+</form>
+
+
+</body>
+</html>

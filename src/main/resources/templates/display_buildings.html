@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display building</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+<body>
+<table border="1" class = "table table-striped table-responsive-md">
+    <thead class="thead-dark">
+    <tr>
+
+        <th scope="col">Nazwa budynku</th>
+        <th scope="col">Ilość mieszkań</th>
+        <th scope="col">Zdjęcie budynku</th>
+        <th scope="col">Usuń budynek</th>
+        <th scope="col">Zdjęcie budynku</th>
+        <th scope="col">Edytuj budynek</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each ="building:${buildingList}">
+        <td th:text="${building.name}"></td>
+        <td th:text="${building.apartments_number}"></td>
+        <td th:text="${building.id}"></td>
+
+        <td>
+            <form method="POST" th:action="@{/delete/{id}(id=${building.id})}">
+                <button type="submit" name="submit" value="value" class="btn btn-danger">Usuń</button>
+            </form>
+        </td>
+        <td>
+            <a th:href="@{'photo/' + ${building.filePath}}">Wyświetl</a>
+        </td>
+        <td>
+            <p th:text="${building.filePath}">view</p>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>
