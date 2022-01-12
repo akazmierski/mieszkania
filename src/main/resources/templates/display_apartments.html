@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display apartment</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+<body>
+<table border="1" class = "table table-striped table-responsive-md">
+    <thead class="thead-dark">
+    <tr>
+
+        <th scope="col">Id mieszkania</th>
+        <th scope="col">Powierzchnia mieszkania</th>
+        <th scope="col">Ilość pokoi</th>
+        <th scope="col">Numer piętra</th>
+        <th scope="col">Relacja z budynkiem</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each ="apartment:${apartmentList}">
+        <td th:text="${apartment.id}"></td>
+        <td th:text="${apartment.surface}"></td>
+        <td th:text="${apartment.number_of_rooms}"></td>
+        <td th:text="${apartment.floor}"></td>
+        <td th:text="${apartment.buildings_number}"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>
